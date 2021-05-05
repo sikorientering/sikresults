@@ -9,7 +9,7 @@ export class AppHome {
   private raceData: any[] = [];
 
   public async componentWillLoad() {
-    const response = await fetch('/assets/racedata/races.json');
+    const response = await fetch('assets/racedata/races.json');
     this.raceData = await response.json();
   }
 
@@ -19,7 +19,7 @@ export class AppHome {
         <ul>
           {this.raceData.map(r => (
             <li>
-              {r.date} <stencil-route-link url={`/race/${r.id}`}>{r.name}</stencil-route-link>
+              {r.date} <stencil-route-link url={`race/${r.id}`}>{r.name}</stencil-route-link>
             </li>
           ))}
         </ul>

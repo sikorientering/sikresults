@@ -54,7 +54,7 @@ export class RaceResult {
     ];
     this.columnSorters = [{ column: this.columns[0], direction: 'ASC' }];
 
-    const reader = new ResultListReader('/assets/racedata');
+    const reader = new ResultListReader('assets/racedata');
     if (this.match && this.match.params.name) {
       this.resultList = await reader.read(`${this.match.params.name}/resultat-IOFv3.xml`);
     }
