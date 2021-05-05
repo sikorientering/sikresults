@@ -11,14 +11,14 @@ export class AppRoot {
     return (
       <div>
         <header>
-          <h1>SIK Results</h1>
+          <h1><stencil-route-link url="/">SIK Results</stencil-route-link></h1>
         </header>
 
         <main>
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-home" exact={true} />
-              <stencil-route url="/profile/:name" component="app-profile" />
+              <stencil-route url="/race/:name" component="race-result" />
             </stencil-route-switch>
           </stencil-router>
         </main>

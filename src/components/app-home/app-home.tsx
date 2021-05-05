@@ -1,37 +1,28 @@
-import { Column } from '@limetech/lime-elements';
 import { Component, h, State } from '@stencil/core';
-import { Person, persons } from './persons';
-
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.scss',
   shadow: true,
 })
 export class AppHome {
-    @State()
-    private tableData: Person[] = persons;
+  @State()
+  private raceData: any[] = [];
 
-    @State()
-    private columns: Column[] = [
-        { title: 'Name', field: 'name' },
-        { title: 'Age', field: 'age' },
-        { title: 'Kind', field: 'kind' },
-        { title: 'Height', field: 'height' },
-        { title: 'Stamina', field: 'stamina' },
-        { title: 'Place of Birth', field: 'placeOfBirth' },
-        { title: 'Sign', field: 'sign' },
-        { title: 'Date of Birth', field: 'dateOfBirth' },
-        { title: 'Role', field: 'role' },
-    ];
+  public async componentWillLoad() {
+    const response = await fetch('/assets/racedata/races.json');
+    this.raceData = await response.json();
+  }
 
   render() {
     return (
       <div class="app-home">
-        <limel-table data={this.tableData} columns={this.columns} />
-
-        <stencil-route-link url="/profile/stencil">
-          <limel-button label="Profile" primary={true}></limel-button>
-        </stencil-route-link>
+        <ul>
+          {this.raceData.map(r => (
+            <li>
+              {r.date} <stencil-route-link url={`/race/${r.id}`}>{r.name}</stencil-route-link>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

@@ -9,10 +9,24 @@ import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AppHome {
     }
-    interface AppProfile {
+    interface AppRoot {
+    }
+    interface RaceResult {
         "match": MatchResults;
     }
-    interface AppRoot {
+    interface ResultTableComponent {
+        /**
+          * Data for the whole row
+         */
+        "data": any;
+        /**
+          * Name of the field for the column
+         */
+        "field": string;
+        /**
+          * The value to display in the table cell
+         */
+        "value": any;
     }
 }
 declare global {
@@ -22,36 +36,58 @@ declare global {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
     };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLRaceResultElement extends Components.RaceResult, HTMLStencilElement {
+    }
+    var HTMLRaceResultElement: {
+        prototype: HTMLRaceResultElement;
+        new (): HTMLRaceResultElement;
+    };
+    interface HTMLResultTableComponentElement extends Components.ResultTableComponent, HTMLStencilElement {
+    }
+    var HTMLResultTableComponentElement: {
+        prototype: HTMLResultTableComponentElement;
+        new (): HTMLResultTableComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "race-result": HTMLRaceResultElement;
+        "result-table-component": HTMLResultTableComponentElement;
     }
 }
 declare namespace LocalJSX {
     interface AppHome {
     }
-    interface AppProfile {
+    interface AppRoot {
+    }
+    interface RaceResult {
         "match"?: MatchResults;
     }
-    interface AppRoot {
+    interface ResultTableComponent {
+        /**
+          * Data for the whole row
+         */
+        "data"?: any;
+        /**
+          * Name of the field for the column
+         */
+        "field"?: string;
+        /**
+          * The value to display in the table cell
+         */
+        "value"?: any;
     }
     interface IntrinsicElements {
         "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
+        "race-result": RaceResult;
+        "result-table-component": ResultTableComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -59,8 +95,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "race-result": LocalJSX.RaceResult & JSXBase.HTMLAttributes<HTMLRaceResultElement>;
+            "result-table-component": LocalJSX.ResultTableComponent & JSXBase.HTMLAttributes<HTMLResultTableComponentElement>;
         }
     }
 }

@@ -1,0 +1,9 @@
+.race-result {
+  padding: 10px;
+}
+
+@media print {
+  limel-button-group {
+    display: none;
+  }
+}
